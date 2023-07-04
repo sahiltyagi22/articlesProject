@@ -16,7 +16,9 @@ app.use('/articles',articlesRoute)
 
 
 app.get('/',async (req,res)=>{
-    const articles = await Article.find()
+    const articles = await Article.find().sort({
+        publishAt : "descending"
+    })
     res.render('articles/index', {articles:articles})
 
 })
